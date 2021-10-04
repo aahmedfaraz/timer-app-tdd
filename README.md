@@ -116,15 +116,33 @@ update `scripts` in package.json with:
 
 #### 5. `Creating first test`
 
-Sample Test
+Some Sample Tests
 
 ```js
+// Snapshot Test
 import React from "react";
 import { shallow } from "enzyme";
+
 import App from "../App";
+
 test("renders the component", () => {
   const component = shallow(<App />);
   expect(component).toMatchSnapshot();
+});
+```
+
+```js
+// Checking about any element
+import React from "react";
+import { shallow } from "enzyme";
+
+import App from "./App";
+
+describe("App Component renders", () => {
+  it("should render a heading", () => {
+    const container = shallow(<App />);
+    expect(container.find("h1").length).toEqual(1);
+  });
 });
 ```
 
