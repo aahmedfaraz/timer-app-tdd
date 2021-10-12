@@ -31,5 +31,4 @@ describe('TimerButton Component', () => {
         expect(mockFunction).toBeCalled();
     })
     
-    
 })
