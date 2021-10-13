@@ -1,9 +1,25 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, cleanup, screen, fireEvent } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+describe('App Component' , () => {
+  beforeEach(() => render(
+    <div>
+      <App />
+    </div>
+  ));
+  afterEach(cleanup);
+
+  test('should render all components', () => {
+    const navbar = screen.getByTestId('navbar');
+    const container = screen.getByTestId('container');
+    const text = screen.getByTestId('text');
+    const buttons = screen.getAllByTestId('button');
+
+    expect(navbar).toBeInTheDocument();
+    expect(container).toBeInTheDocument();
+    expect(text).toBeInTheDocument();
+    expect(buttons).toHaveLength(3);
+  })
+  
+})

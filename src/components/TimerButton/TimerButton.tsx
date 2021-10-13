@@ -9,7 +9,7 @@ type pageProps = {
 
 const TimerButton:React.FC<pageProps> = ({icon, text, callback}) => {
     return (
-        <Button variant="outlined" color="primary" data-testid="button" onClick={callback} ><Icon data-testid="icon">{icon}</Icon> {text}</Button>
+        <Button variant="contained" size="large" color="primary" data-testid="button" onClick={callback} ><Icon data-testid="icon">{icon}</Icon> {text}</Button>
     )
 }
 

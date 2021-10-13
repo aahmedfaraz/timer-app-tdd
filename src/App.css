@@ -25,3 +25,10 @@ nav strong {
   color: rgb(124, 124, 124) !important;
   font-weight: unset !important;
 }
+
+.container {
+  width: 700px !important;
+  max-width: calc(100% - 20px) !important;
+  margin: 20px auto !important;
+  padding: 10px !important;
+}
