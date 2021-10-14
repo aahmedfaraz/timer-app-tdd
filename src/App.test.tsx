@@ -1,14 +1,22 @@
 import React from 'react';
+import sinon from 'sinon';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
 import App from './App';
 
 describe('App Component' , () => {
-  beforeEach(() => render(
-    <div>
-      <App />
-    </div>
-  ));
-  afterEach(cleanup);
+  let clock : any;
+  beforeEach(() => {
+    clock = sinon.useFakeTimers();
+    render(
+      <div>
+        <App />
+      </div>
+    )
+  });
+  afterEach(() => {
+    clock.restore();
+    cleanup();
+  });
 
   test('should render all components', () => {
     const navbar = screen.getByTestId('navbar');
@@ -20,6 +28,9 @@ describe('App Component' , () => {
     expect(container).toBeInTheDocument();
     expect(text).toBeInTheDocument();
     expect(buttons).toHaveLength(3);
+    setTimeout(() => {
+      console.log('Ahmed Faraz Sinon Fun')
+    }, 20000);
+    clock.tick(20000);
   })
-  
 })
