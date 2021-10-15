@@ -2,6 +2,8 @@
 
 This is a react app using TDD approach with testing library React.
 
+`Live App:` [http://timer-tdd-ahmedfaraz.surge.sh/](http://timer-tdd-ahmedfaraz.surge.sh/)
+
 # New Learnings
 
 1. `Use of multiple states:` When working on time based app, putting all state in one useState-Hook causes issue, specifically when updating the state within the timeout time gap.
