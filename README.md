@@ -8,19 +8,28 @@ This is a react app using TDD approach with testing library React.
 
 2. `clearTimeout(timeOut):` Must use clearTimeout to avoid side-by-side non-required operations.
 
-3. `sinon`** + @types/sinon**, Using npm package **sinon** for useFakeTimers
+3. `Jest FakeTimers:` We can use setTimeout or setInterval simply but to avoid waiting upto the given time we can use FakeTimers, that's how to use em,
 
 ```js
-// Time-Travels🕗 with sinon's FakeTimers
-let clock: any;
-// initialize fake timer before every test
-beforeEach(() => {
-  clock = sinon.useFakeTimers();
+// Time Traveling with Jest FakeTimers
+import { act } from "@testing-library/react";
+
+describe("MyComp Component", () => {
+  beforeEach(() => {
+    jest.useFakeTimers(); // Must call is before rendering
+    render(<MyComp />);
+  });
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  test("should ...", () => {
+    // button clicked
+    act(() => {
+      // must be inside act function
+      jest.advanceTimersByTime(20000); // Go 20 seconds in future
+    });
+    // See result
+  });
 });
-// restore it after every test
-afterEach(() => {
-  clock.restore();
-});
-// use it like
-clock.tick(5000); // for moving 5 seconds in future
 ```
