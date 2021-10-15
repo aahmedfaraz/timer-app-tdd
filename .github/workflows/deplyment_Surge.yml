@@ -1,0 +1,25 @@
+name: Deploying React App (Timer App) to Surge
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install NodeJS
+        run : egordm/gha-yarn-node-cache@v1
+
+      - name: Install JS dependencies
+        run: yarn install
+      
+      - name: Install Surge
+        run: yarn add surge
+        
+      - name: Build App
+        run: yarn build
+        
+      - name: Deploy App
+        run: surge ./build timer-tdd-ahmedfaraz.surge.sh --token ${{secrects.SURGE_TOKEN}}
