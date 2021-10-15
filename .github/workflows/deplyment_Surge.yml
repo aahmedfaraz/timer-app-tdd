@@ -24,7 +24,7 @@ jobs:
         run: yarn test
       
       - name: Install Surge
-        run: yarn add surge
+        run: yarn global add surge
         
       - name: Build App
         run: yarn build
